@@ -153,4 +153,9 @@ class BinarySearchTest {
         assertEquals(3, binarySearch.specialArrayBinary(intArrayOf(0,4,3,0,4)))
         assertEquals(1, binarySearch.specialArrayBinary(intArrayOf(1)))
     }
+
+    @Test
+    fun testTwoSum() {
+        assertTrue(intArrayOf(1, 2) contentEquals binarySearch.twoSum(intArrayOf(2,7,11,15), 9))
+    }
 }
