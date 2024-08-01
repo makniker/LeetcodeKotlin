@@ -117,6 +117,7 @@ class BinarySearchTest {
         assertEquals(listOf(4), binarySearch.targetIndices(intArrayOf(1, 2, 5, 2, 3), 5))
         assertEquals(listOf(1, 2), binarySearch.targetIndices(intArrayOf(1, 2, 5, 2, 3), 2))
         assertEquals(emptyList<Int>(), binarySearch.targetIndices(intArrayOf(1), 2))
+        assertEquals(emptyList<Int>(), binarySearch.targetIndices(intArrayOf(1, 1, 1, 2, 5), 3))
     }
 
     @Test

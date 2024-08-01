@@ -132,10 +132,36 @@ class BinarySearch {
         return max(mid, lastOneRec(nums, target, mid+1, hi ))
     }
 
+    //2089
     fun targetIndices(nums: IntArray, target: Int): List<Int> {
         nums.sort()
-
-        return emptyList()
+        var lo = 0
+        var hi = nums.size - 1
+        var lastInd = -1
+        //ищем последний индекс
+        while (lo<=hi) {
+            val mid = lo + (hi - lo) / 2
+            if (nums[mid] < target) lo = mid + 1
+            if (nums[mid] > target) hi = mid - 1
+            if (nums[mid] == target) {
+                lastInd = mid
+                lo = mid + 1
+            }
+        }
+        if (lastInd == -1) return emptyList()
+        lo = 0
+        hi = lastInd
+        var firstInd = -1
+        while (lo<=hi) {
+            val mid = lo + (hi - lo) / 2
+            if (nums[mid] < target) {lo = mid + 1}
+            if (nums[mid] > target) {hi = mid - 1}
+            if (nums[mid] == target) {
+                firstInd = mid
+                hi = mid - 1
+            }
+        }
+        return (firstInd..lastInd).toList()
     }
 
     //найти краний правый отрицательный индекс
