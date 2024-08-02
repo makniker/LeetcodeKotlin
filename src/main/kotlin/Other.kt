@@ -1,4 +1,5 @@
 import java.util.*
+import kotlin.math.abs
 
 class Other {
     fun isPalindrome(x: Int): Boolean {
@@ -37,11 +38,11 @@ class Other {
         var count = 0
         for (i in nums.indices) {
             val v = nums[i]
-           for (j in i+1..nums.size) {
-               if (v + nums[j]<target) {
-                   ++count
-               }
-           }
+            for (j in i + 1..nums.size) {
+                if (v + nums[j] < target) {
+                    ++count
+                }
+            }
         }
         return count
     }
@@ -50,10 +51,27 @@ class Other {
     //смотрим сумму ариф. прогрессии и вычитаем из нее все существующие номера в массиве
     fun missingNumber(nums: IntArray): Int {
         val n = nums.size
-        var sum = (n + 1) * (2 * 0 + 1*(n)) / 2
+        var sum = (n + 1) * (2 * 0 + 1 * (n)) / 2
         for (i in nums) {
             sum -= i
         }
         return sum
+    }
+
+    //448
+    //тк в ограничениях задачи нельзя использовать доп место,
+    // будем помечать число по индексу отрицательным, если число, равное индексу, присутствует в массиве
+    fun findDisappearedNumbers(nums: IntArray): List<Int> {
+        for (i in nums.indices) {
+            val v = abs(nums[i]) - 1
+            nums[v] = abs(nums[v]) * -1
+        }
+        val l = mutableListOf<Int>()
+        for (i in nums.indices) {
+            if (nums[i] > 0) {
+                l.add(i + 1)
+            }
+        }
+        return l
     }
 }
