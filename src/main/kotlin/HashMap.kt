@@ -4,7 +4,7 @@ class Hash {
     //217
     fun containsDuplicate(nums: IntArray): Boolean {
         val m = HashMap<Int, Int>()
-        nums.forEach { i ->
+        for (i in nums) {
             if (m.contains(i)) {
                 return true
             }
