@@ -45,4 +45,15 @@ class Other {
         }
         return count
     }
+
+    //268
+    //смотрим сумму ариф. прогрессии и вычитаем из нее все существующие номера в массиве
+    fun missingNumber(nums: IntArray): Int {
+        val n = nums.size
+        var sum = (n + 1) * (2 * 0 + 1*(n)) / 2
+        for (i in nums) {
+            sum -= i
+        }
+        return sum
+    }
 }

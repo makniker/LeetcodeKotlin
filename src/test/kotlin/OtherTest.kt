@@ -18,4 +18,11 @@ class OtherTest {
         assertEquals(10, test.countPairs(listOf(-6,2,5,-2,-7,-1,3), -2))
         assertEquals(0, test.countPairs(listOf(1), 2))
     }
+
+    @Test
+    fun testMissingNumber() {
+        assertEquals(2, test.missingNumber(intArrayOf(3,0,1)))
+        assertEquals(2, test.missingNumber(intArrayOf(0,1)))
+        assertEquals(8, test.missingNumber(intArrayOf(9,6,4,2,3,5,7,0,1)))
+    }
 }
