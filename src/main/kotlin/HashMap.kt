@@ -27,4 +27,27 @@ class Hash {
         }
         return false
     }
+
+    //220
+    fun containsNearbyAlmostDuplicate(nums: IntArray, indexDiff: Int, valueDiff: Int): Boolean {
+        val m = HashMap<Int, Int>() // значение и индекс
+        for (index in nums.indices) {
+            for (t in nums[index]..(nums[index] + valueDiff)) {
+                if(m.contains(t)) {
+                    if (abs(m[t]!! - index) <= indexDiff ) {
+                        return true
+                    }
+                }
+            }
+            for (t in (nums[index] - valueDiff)..nums[index]) {
+                if (m.contains(t)) {
+                    if (abs(m[t]!! - index) <= indexDiff ) {
+                        return true
+                    }
+                }
+            }
+            m[nums[index]] = index
+        }
+        return false
+    }
 }
