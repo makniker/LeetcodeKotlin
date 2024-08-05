@@ -83,4 +83,29 @@ class Hash {
         }
         return arr.toIntArray()
     }
+
+    //2215
+    fun findDifference(nums1: IntArray, nums2: IntArray): List<List<Int>> {
+        val m = HashMap<Int, Int>()
+        val m2 = HashMap<Int, Int>()
+        for (num in nums1) {
+            m[num] = 1
+        }
+        for (num in nums2) {
+            m2[num] = 1
+        }
+        val a1 = mutableListOf<Int>()
+        val a2 = mutableListOf<Int>()
+        for (k in m.keys) {
+            if (!m2.containsKey(k)) {
+                a1.add(k)
+            }
+        }
+        for (k in m2.keys) {
+            if (!m.containsKey(k)) {
+                a2.add(k)
+            }
+        }
+        return listOf(a1, a2)
+    }
 }
