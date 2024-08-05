@@ -24,5 +24,7 @@ class HashTest {
         assertTrue(hash.containsNearbyAlmostDuplicate(intArrayOf(1,2,3,1), 3, 0))
         assertFalse(hash.containsNearbyAlmostDuplicate(intArrayOf(1,5,9,1,5,9), 2, 3))
         assertTrue(hash.containsNearbyAlmostDuplicate(intArrayOf(1,0,1,1), 1, 2))
+        assertTrue(hash.containsNearbyAlmostDuplicate(intArrayOf(8,7,15,1,6,1,9,15), 1, 3))
+        assertFalse(hash.containsNearbyAlmostDuplicate(intArrayOf(2,0,-2,2), 2, 1))
     }
 }

@@ -1,5 +1,5 @@
-import kotlin.collections.HashMap
 import kotlin.math.abs
+
 
 class Hash {
     //217
@@ -29,24 +29,20 @@ class Hash {
     }
 
     //220
+    //берем бакеты ширины valueDiff, смотри, в какой бакет попадает число,
+    // искомый сосед будет либо в этом бакете, либо в соседнем. Для соседних проверяем еще раз условия вхождения в valueDiff,
+    //всегда держим последний вошедший индекс
     fun containsNearbyAlmostDuplicate(nums: IntArray, indexDiff: Int, valueDiff: Int): Boolean {
-        val m = HashMap<Int, Int>() // значение и индекс
+        fun getBucketId(num: Int, bucketWidth: Int) = if (num > 0) num / bucketWidth else (num + 1) / bucketWidth - 1
+        val m = HashMap<Int, Int>()
+        val bucketWidth = valueDiff + 1
         for (index in nums.indices) {
-            for (t in nums[index]..(nums[index] + valueDiff)) {
-                if(m.contains(t)) {
-                    if (abs(m[t]!! - index) <= indexDiff ) {
-                        return true
-                    }
-                }
-            }
-            for (t in (nums[index] - valueDiff)..nums[index]) {
-                if (m.contains(t)) {
-                    if (abs(m[t]!! - index) <= indexDiff ) {
-                        return true
-                    }
-                }
-            }
-            m[nums[index]] = index
+            val numBucketId = getBucketId(nums[index], bucketWidth)
+            if (m.containsKey(numBucketId)) return true
+            else if (m.containsKey(numBucketId - 1) && nums[index] - m[numBucketId - 1]!! <= valueDiff) return true
+            else if (m.containsKey(numBucketId + 1) && m[numBucketId + 1]!! - nums[index] <= valueDiff) return true
+            m[numBucketId] = nums[index]
+            if (index >= indexDiff) m.remove(getBucketId(nums[index - indexDiff], bucketWidth));
         }
         return false
     }
