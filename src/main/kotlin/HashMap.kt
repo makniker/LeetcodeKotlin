@@ -46,4 +46,19 @@ class Hash {
         }
         return false
     }
+
+    //349
+    fun intersection(nums1: IntArray, nums2: IntArray): IntArray {
+        val m = HashMap<Int, Int>()
+        for (num in nums1) {
+            m[num] = 1
+        }
+        val arr = mutableSetOf<Int>()
+        for (num in nums2) {
+            if (m.containsKey(num)) {
+                arr.add(num)
+            }
+        }
+        return arr.toIntArray()
+    }
 }
