@@ -1,4 +1,5 @@
 import kotlin.math.abs
+import kotlin.math.min
 
 
 class Hash {
@@ -57,6 +58,27 @@ class Hash {
         for (num in nums2) {
             if (m.containsKey(num)) {
                 arr.add(num)
+            }
+        }
+        return arr.toIntArray()
+    }
+
+    //350
+    fun intersect(nums1: IntArray, nums2: IntArray): IntArray {
+        val m = HashMap<Int, Int>()
+        val m2 = HashMap<Int, Int>()
+        for (num in nums1) {
+            m[num] = m.getOrDefault(num, 0) + 1
+        }
+        for (num in nums2) {
+            m2[num] = m2.getOrDefault(num, 0) + 1
+        }
+        val arr = mutableListOf<Int>()
+        for (num in nums2) {
+            if (m.containsKey(num) && !arr.contains(num)) {
+                for (i in 1..min(m[num]!!, m2[num]!!)) {
+                    arr.add(num)
+                }
             }
         }
         return arr.toIntArray()

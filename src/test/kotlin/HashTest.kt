@@ -27,4 +27,18 @@ class HashTest {
         assertTrue(hash.containsNearbyAlmostDuplicate(intArrayOf(8,7,15,1,6,1,9,15), 1, 3))
         assertFalse(hash.containsNearbyAlmostDuplicate(intArrayOf(2,0,-2,2), 2, 1))
     }
+
+    @Test
+    fun testIntersect() {
+        assertTrue(intArrayOf(2).myEquals(hash.intersect(intArrayOf(1,2,2,1), intArrayOf(2))))
+    }
+}
+
+fun IntArray.myEquals(array: IntArray): Boolean {
+    if (this === array) return true
+    if (this.size != array.size) return false
+    for (i in indices) {
+        if (this[i] != array[i]) return false
+    }
+    return true
 }
