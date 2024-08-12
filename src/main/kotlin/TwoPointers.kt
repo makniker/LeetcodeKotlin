@@ -41,7 +41,23 @@ class TwoPointers {
 
     //2000
     fun reversePrefix(word: String, ch: Char): String {
-        var j = word.indexOfFirst { it == ch }
+        val j = word.indexOfFirst { it == ch }
         return word.replaceRange(0, j + 1, word.substring(0, j + 1).reversed())
+    }
+
+    //26
+    fun removeDuplicates(nums: IntArray): Int {
+        var i = 0
+        var j = 0
+        var endOfFilteredArr = 0
+        while (i < nums.size) {
+            nums[endOfFilteredArr] = nums[i]
+            while (j < nums.size && nums[j] == nums[i]) {
+                j++
+            }
+            endOfFilteredArr++
+            i = j
+        }
+        return endOfFilteredArr
     }
 }

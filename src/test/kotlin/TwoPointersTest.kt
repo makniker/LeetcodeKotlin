@@ -46,4 +46,23 @@ class TwoPointersTest {
     fun testReversePrefix() {
         assertEquals("dcbaefd", test.reversePrefix("abcdefd", 'd'))
     }
+
+    @Test
+    fun testRemoveDupl() {
+        var nums = intArrayOf(1,1,2)
+        var expectedNums = intArrayOf(1,2)
+        var k = test.removeDuplicates(nums)
+        assertEquals(expectedNums.size, k)
+        for (i in expectedNums.indices) {
+            assertEquals(nums[i], expectedNums[i])
+        }
+
+        nums = intArrayOf(0,0,1,1,1,2,2,3,3,4)
+        expectedNums = intArrayOf(0,1,2,3,4)
+        k = test.removeDuplicates(nums)
+        assertEquals(expectedNums.size, k)
+        for (i in expectedNums.indices) {
+            assertEquals(nums[i], expectedNums[i])
+        }
+    }
 }
