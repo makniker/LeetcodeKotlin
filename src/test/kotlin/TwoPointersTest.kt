@@ -41,4 +41,9 @@ class TwoPointersTest {
         t = mutableListOf()
         assertEquals(mutableListOf(1), test.merge(t, mutableListOf(1)))
     }
+
+    @Test
+    fun testReversePrefix() {
+        assertEquals("dcbaefd", test.reversePrefix("abcdefd", 'd'))
+    }
 }

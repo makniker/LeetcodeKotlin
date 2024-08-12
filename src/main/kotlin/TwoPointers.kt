@@ -38,4 +38,10 @@ class TwoPointers {
         }
         return list
     }
+
+    //2000
+    fun reversePrefix(word: String, ch: Char): String {
+        var j = word.indexOfFirst { it == ch }
+        return word.replaceRange(0, j + 1, word.substring(0, j + 1).reversed())
+    }
 }
