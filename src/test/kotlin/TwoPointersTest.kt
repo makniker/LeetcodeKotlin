@@ -8,22 +8,18 @@ class TwoPointersTest {
     fun testMerge() {
         var t = intArrayOf(1, 2, 3, 0, 0, 0)
         test.merge(t, 3, intArrayOf(2, 5, 6), 3)
-        println(t)
         assertTrue(intArrayOf(1, 2, 2, 3, 5, 6).myEquals(t))
 
         t = intArrayOf(1, 2, 3, 0, 0, 0, 0)
         test.merge(t, 3, intArrayOf(2, 5, 6, 8), 4)
-        println(t)
         assertTrue(intArrayOf(1, 2, 2, 3, 5, 6, 8).myEquals(t))
 
         t = intArrayOf(1)
         test.merge(t, 1, intArrayOf(), 0)
-        println(t)
         assertTrue(intArrayOf(1).myEquals(t))
 
         t = intArrayOf(0)
         test.merge(t, 0, intArrayOf(1), 1)
-        println(t.toString())
         assertTrue(intArrayOf(1).myEquals(t))
     }
 
@@ -64,5 +60,32 @@ class TwoPointersTest {
         for (i in expectedNums.indices) {
             assertEquals(nums[i], expectedNums[i])
         }
+    }
+
+    @Test
+    fun testMoveZero() {
+        var t = intArrayOf(1, 2, 3, 0, 0, 0)
+        test.moveZeroes(t)
+        assertTrue(intArrayOf(1, 2, 3, 0, 0, 0).myEquals(t))
+
+        t = intArrayOf(1, 2, 3, 0, 4, 0)
+        test.moveZeroes(t)
+        assertTrue(intArrayOf(1, 2, 3, 4, 0, 0).myEquals(t))
+
+        t = intArrayOf(0, 0, 0, 0, 0, 0)
+        test.moveZeroes(t)
+        assertTrue(intArrayOf(0, 0, 0, 0, 0, 0).myEquals(t))
+
+        t = intArrayOf(0)
+        test.moveZeroes(t)
+        assertTrue(intArrayOf(0).myEquals(t))
+
+        t = intArrayOf(0, 1, 0, 2, 0, 0)
+        test.moveZeroes(t)
+        assertTrue(intArrayOf(1, 2, 0, 0, 0, 0).myEquals(t))
+
+        t = intArrayOf(0,1,0,3,12)
+        test.moveZeroes(t)
+        assertTrue(intArrayOf(1,3,12, 0, 0).myEquals(t))
     }
 }

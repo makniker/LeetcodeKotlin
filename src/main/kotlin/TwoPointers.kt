@@ -60,4 +60,26 @@ class TwoPointers {
         }
         return endOfFilteredArr
     }
+
+    //283
+    fun moveZeroes(nums: IntArray) {
+        var realArrInd = 0
+        var i = 0
+        var j = 0
+        while (i < nums.size) {
+            if (j >= nums.size) return
+            while (nums[j] == 0) {
+                j++
+                if (j == nums.size) return
+            }
+            i = j
+            if (nums[realArrInd] == 0) {
+                nums[realArrInd++] = nums[i]
+                nums[i] = 0
+            } else {
+                nums[realArrInd++] = nums[i]
+            }
+            j++
+        }
+    }
 }
