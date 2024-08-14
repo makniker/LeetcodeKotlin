@@ -88,4 +88,47 @@ class TwoPointersTest {
         test.moveZeroes(t)
         assertTrue(intArrayOf(1,3,12, 0, 0).myEquals(t))
     }
+
+    @Test
+    fun testRemoveDuplicates80() {
+        var nums = intArrayOf(1,1,1,2,2,2)
+        var expectedNums = intArrayOf(1,1,2,2,)
+        var k = test.removeDuplicates80(nums)
+        assertEquals(expectedNums.size, k)
+        for (i in expectedNums.indices) {
+            assertEquals(nums[i], expectedNums[i])
+        }
+
+        nums = intArrayOf(0)
+        expectedNums = intArrayOf(0)
+        k = test.removeDuplicates80(nums)
+        assertEquals(expectedNums.size, k)
+        for (i in expectedNums.indices) {
+            assertEquals(nums[i], expectedNums[i])
+        }
+
+        nums = intArrayOf(0,1,1,1)
+        expectedNums = intArrayOf(0,1,1)
+        k = test.removeDuplicates80(nums)
+        assertEquals(expectedNums.size, k)
+        for (i in expectedNums.indices) {
+            assertEquals(nums[i], expectedNums[i])
+        }
+
+        nums = intArrayOf(0,1,1,1)
+        expectedNums = intArrayOf(0,1,1)
+        k = test.removeDuplicates80(nums)
+        assertEquals(expectedNums.size, k)
+        for (i in expectedNums.indices) {
+            assertEquals(nums[i], expectedNums[i])
+        }
+
+        nums = intArrayOf(0,0,1,1,1,1,2,3,3)
+        expectedNums = intArrayOf(0,0,1,1,2,3,3)
+        k = test.removeDuplicates80(nums)
+        assertEquals(expectedNums.size, k)
+        for (i in expectedNums.indices) {
+            assertEquals(nums[i], expectedNums[i])
+        }
+    }
 }

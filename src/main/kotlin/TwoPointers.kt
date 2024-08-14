@@ -1,3 +1,5 @@
+import kotlin.math.abs
+
 class TwoPointers {
     //88
     //идем в обратном порядке, смотрим на индекс второго массива
@@ -81,5 +83,31 @@ class TwoPointers {
             }
             j++
         }
+    }
+
+    //80
+    fun removeDuplicates80(nums: IntArray): Int {
+        var k = 0
+        var i = 0
+        while (i < nums.size) {
+            while (i < nums.size && nums[i] == nums[k]) {
+                if (abs(i - k) > 1) {
+                    nums[i] = Int.MIN_VALUE
+                }
+                i++
+            }
+            k = i
+        }
+        var realArrInd = 0
+        i = realArrInd + 1
+        while (i < nums.size) {
+            if (nums[i] != Int.MIN_VALUE) {
+                realArrInd++
+                nums[realArrInd] = nums[i]
+                if (realArrInd != i) nums[i] = Int.MIN_VALUE
+            }
+            i++
+        }
+        return realArrInd + 1
     }
 }
