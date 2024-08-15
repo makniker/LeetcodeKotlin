@@ -1,3 +1,4 @@
+import kotlin.math.log2
 import kotlin.math.max
 import kotlin.math.min
 
@@ -232,5 +233,36 @@ class BinarySearch {
             }
         }
         return intArrayOf()
+    }
+
+    //33
+    //найти место сдвига
+    //бинарный поиск в двух этих половинках
+    fun searchInRotatedSortedArr(nums: IntArray, target: Int): Int {
+        val rp = findRotationStep(nums)
+        val firstArr = searchOneRec(nums, target, 0, rp - 1)
+        if (firstArr == -1) {
+            return searchOneRec(nums, target, rp, nums.size - 1)
+        }
+        return firstArr
+    }
+
+    fun findRotationStep(nums: IntArray) : Int {
+        var lo = 0
+        var hi = nums.size - 1
+        var rotationPoint = 0
+        var count = 0
+        while (lo<hi && (count <= log2(nums.size.toDouble()))) {
+            val mid = lo + (hi - lo) / 2
+            if (nums[mid] < nums[lo]) {
+                rotationPoint = mid
+                hi = mid - 1
+            } else if (nums[mid] >= nums[hi]) {
+                rotationPoint = mid + 1
+                lo = mid + 1
+            }
+            count++
+        }
+        return rotationPoint
     }
 }

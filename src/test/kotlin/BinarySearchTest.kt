@@ -158,4 +158,30 @@ class BinarySearchTest {
     fun testTwoSum() {
         assertTrue(intArrayOf(1, 2) contentEquals binarySearch.twoSum(intArrayOf(2,7,11,15), 9))
     }
+
+
+
+    @Test
+    fun testFindRotPoint() {
+        var nums = intArrayOf(5,6,7,1,2,3,4)
+        assertEquals(3, binarySearch.findRotationStep(nums))
+
+        nums = intArrayOf(7,1,2,3,4,5,6)
+        assertEquals(1, binarySearch.findRotationStep(nums))
+
+        nums = intArrayOf(2,3,4,5,6,7,1)
+        assertEquals(6, binarySearch.findRotationStep(nums))
+
+        nums = intArrayOf(3,4,5,6,7,1,2)
+        assertEquals(5, binarySearch.findRotationStep(nums))
+
+        nums = intArrayOf(5,6,7,1,2,3,4)
+        assertEquals(3, binarySearch.findRotationStep(nums))
+
+        nums = intArrayOf(3,1)
+        assertEquals(1, binarySearch.findRotationStep(nums))
+
+        nums = intArrayOf(1,2,3)
+        assertEquals(0, binarySearch.findRotationStep(nums))
+    }
 }
