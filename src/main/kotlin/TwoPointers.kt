@@ -110,4 +110,48 @@ class TwoPointers {
         }
         return realArrInd + 1
     }
+
+    //125
+    fun isPalindrome(s: String): Boolean {
+        if (s.length < 2) {
+            return true
+        }
+        var i = 0
+        var j = s.length - 1
+        while (i <= j) {
+            while (!s[i].isLetterOrDigit()) {
+                i++
+                if (i > s.length - 1) {
+                    return true
+                }
+            }
+            while (!s[j].isLetterOrDigit()) {
+                j--
+                if (j < 0) {
+                    return true
+                }
+            }
+            if (s[i++].lowercaseChar() != s[j--].lowercaseChar()) {
+                return false
+            }
+        }
+        return true
+    }
+
+    //392
+    fun isSubsequence(s: String, t: String): Boolean {
+        if (t.length < s.length) {
+            return false
+        }
+        var j = 0
+        for (i in s.indices) {
+            if (j > t.length - 1) {return false}
+            while (t[j] != s[i]) {
+                j++
+                if (j > t.length - 1) {return false}
+            }
+            j++
+        }
+        return true
+    }
 }

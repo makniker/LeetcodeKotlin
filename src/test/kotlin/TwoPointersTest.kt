@@ -131,4 +131,23 @@ class TwoPointersTest {
             assertEquals(nums[i], expectedNums[i])
         }
     }
+
+    @Test
+    fun testIsPalindrome() {
+        assertTrue(test.isPalindrome("A man, a plan, a canal: Panama"))
+        assertFalse(test.isPalindrome("race a car"))
+        assertTrue(test.isPalindrome(" "))
+        assertTrue(test.isPalindrome("aa"))
+        assertTrue(test.isPalindrome(".,"))
+        assertTrue(test.isPalindrome("a.,a"))
+    }
+
+    @Test
+    fun testIsSub() {
+        assertTrue(test.isSubsequence("abc", "ahbgdc"))
+        assertFalse(test.isSubsequence("axc", "ahbgdc"))
+        assertTrue(test.isSubsequence("abc", "abc"))
+        assertFalse(test.isSubsequence("abc", ""))
+        assertFalse(test.isSubsequence("aaaaaa", "bbaaaa"))
+    }
 }
