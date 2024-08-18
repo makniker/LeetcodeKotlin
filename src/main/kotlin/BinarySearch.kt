@@ -219,22 +219,6 @@ class BinarySearch {
         return -1
     }
 
-    //167
-    fun twoSum(numbers: IntArray, target: Int): IntArray {
-        for (i in 0..numbers.size - 2) {
-            val t = target - numbers[i]
-            var lo = i + 1
-            var hi = numbers.size - 1
-            while (lo<=hi) {
-                val mid = lo + (hi - lo) / 2
-                if (numbers[mid] < t) lo = mid + 1
-                if (numbers[mid] > t) hi = mid - 1
-                if (numbers[mid] == t) return intArrayOf(i + 1, mid + 1)
-            }
-        }
-        return intArrayOf()
-    }
-
     //33
     //найти место сдвига
     //бинарный поиск в двух этих половинках
