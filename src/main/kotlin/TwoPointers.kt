@@ -154,4 +154,17 @@ class TwoPointers {
         }
         return true
     }
+
+    //3194
+    fun minimumAverage(nums: IntArray): Double {
+        var minVal = Int.MAX_VALUE
+        nums.sort()
+        for (i in 0..(nums.size / 2)) {
+            val av = (nums[i] + nums[nums.size - 1 - i])
+            if (av < minVal) {
+                minVal = av
+            }
+        }
+        return minVal.toDouble() / 2
+    }
 }

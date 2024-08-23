@@ -150,4 +150,12 @@ class TwoPointersTest {
         assertFalse(test.isSubsequence("abc", ""))
         assertFalse(test.isSubsequence("aaaaaa", "bbaaaa"))
     }
+
+    @Test
+    fun testMinimumAverage() {
+        assertEquals(5.5, test.minimumAverage(intArrayOf(7,8,3,4,15,13,4,1)))
+        assertEquals(5.5, test.minimumAverage(intArrayOf(1,9,8,3,10,5)))
+        assertEquals(5.0, test.minimumAverage(intArrayOf(1,2,3,7,8,9)))
+
+    }
 }
