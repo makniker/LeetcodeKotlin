@@ -1,4 +1,6 @@
+import java.util.*
 import kotlin.math.abs
+
 
 class TwoPointers {
     //88
@@ -145,10 +147,14 @@ class TwoPointers {
         }
         var j = 0
         for (i in s.indices) {
-            if (j > t.length - 1) {return false}
+            if (j > t.length - 1) {
+                return false
+            }
             while (t[j] != s[i]) {
                 j++
-                if (j > t.length - 1) {return false}
+                if (j > t.length - 1) {
+                    return false
+                }
             }
             j++
         }
@@ -166,5 +172,17 @@ class TwoPointers {
             }
         }
         return minVal.toDouble() / 2
+    }
+
+    //524
+    fun findLongestWord(s: String, dictionary: List<String>): String {
+        val newDict = dictionary.sortedWith(Comparator.comparingInt(String::length).reversed().thenComparing(String::toString))
+        for (word in newDict) {
+            var i = 0
+            for (ch in s)
+                if (i < word.length && ch == word[i]) i++
+                if (i == word.length) return word
+        }
+        return ""
     }
 }
